@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -11,9 +11,9 @@ namespace Lab_5
         static void Main(string[] args)
         {
             Console.Write("Введіть кількість рядків: ");
-            int m = Convert.ToInt32(Console.ReadLine());
+            int m = int.Parse(Console.ReadLine());
             Console.Write("Введіть кількість стовпців: ");
-            int n = Convert.ToInt32(Console.ReadLine());
+            int n = int.Parse(Console.ReadLine());
 
             int[,] arr = new int[m, n];
             Console.WriteLine("Введіть елементи масиву");
@@ -22,7 +22,7 @@ namespace Lab_5
                 for (int j = 0; j < arr.GetLength(1); j++)
                 {
                     Console.Write($"Елемент [{i}][{j}]: ");
-                    arr[i, j] = Convert.ToInt32(Console.ReadLine());
+                    arr[i, j] = int.Parse(Console.ReadLine());
                 }
             }
 
@@ -54,14 +54,10 @@ namespace Lab_5
             int[,] arrNew = new int[m - 1, n - 1];
             for (int i = 0; i < arrNew.GetLength(0); i++)
             {
-                newi = i;
-                if (i >= row)
-                    newi = i + 1;
+                newi = i >= row ? (i + 1) : i;
                 for (int j = 0; j < arrNew.GetLength(1); j++)
                 {
-                    newj = j;
-                    if (j >= col)
-                        newj = j + 1;
+                    newj = j >= row ? (j + 1) : j;
                     arrNew[i, j] = arr[newi, newj];
                 }
             }
